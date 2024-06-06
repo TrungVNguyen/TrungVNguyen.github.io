@@ -5,47 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trung Nguyen - Technical Artist</title>
     <style>
+        :root {
+            --bg-color-light: #f4f4f4;
+            --text-color-light: #333;
+            --header-bg-light: #fff;
+            --header-shadow-light: rgba(0, 0, 0, 0.1);
+            --footer-bg-light: #fff;
+            --footer-shadow-light: rgba(0, 0, 0, 0.1);
+
+            --bg-color-dark: #121212;
+            --text-color-dark: #e0e0e0;
+            --header-bg-dark: #1e1e1e;
+            --header-shadow-dark: rgba(0, 0, 0, 0.5);
+            --footer-bg-dark: #1e1e1e;
+            --footer-shadow-dark: rgba(0, 0, 0, 0.5);
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
             margin: 0;
             padding: 0;
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+            transition: background-color 0.3s, color 0.3s;
         }
+
         header {
             text-align: center;
             padding: 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: var(--header-bg-dark);
+            box-shadow: 0 2px 4px var(--header-shadow-dark);
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
+
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            color: #333;
         }
+
         header p {
             margin: 0;
             font-size: 1.25rem;
-            color: #666;
         }
+
         section {
             padding: 2rem;
         }
+
         .portfolio-item {
-            background-color: #fff;
+            background-color: var(--header-bg-dark);
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px var(--header-shadow-dark);
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
+
+        .portfolio-item video {
+            width: 100%;
+            border-radius: 5px;
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
-            background-color: #fff;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            background-color: var(--footer-bg-dark);
+            box-shadow: 0 -2px 4px var(--footer-shadow-dark);
             position: fixed;
             width: 100%;
             bottom: 0;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .light-mode {
+            --bg-color-dark: var(--bg-color-light);
+            --text-color-dark: var(--text-color-light);
+            --header-bg-dark: var(--header-bg-light);
+            --header-shadow-dark: var(--header-shadow-light);
+            --footer-bg-dark: var(--footer-bg-light);
+            --footer-shadow-dark: var(--footer-shadow-light);
+        }
+
+        .toggle-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode .toggle-button {
+            background-color: #fff;
+            color: #333;
         }
     </style>
 </head>
@@ -66,10 +122,18 @@
     <div class="portfolio-item">
         <h3>Project Title 1</h3>
         <p>Description of your project. What was it about? What technologies did you use?</p>
+        <video controls>
+            <source src="path/to/your/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
     <div class="portfolio-item">
         <h3>Project Title 2</h3>
         <p>Description of your project. What was it about? What technologies did you use?</p>
+        <video controls>
+            <source src="path/to/your/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
     <!-- Add more portfolio items as needed -->
 </section>
@@ -77,6 +141,20 @@
 <footer>
     <p>Contact: trung.nguyen@example.com</p>
 </footer>
+
+<button class="toggle-button" onclick="toggleMode()">Switch to Light Mode</button>
+
+<script>
+    function toggleMode() {
+        document.body.classList.toggle('light-mode');
+        var button = document.querySelector('.toggle-button');
+        if (document.body.classList.contains('light-mode')) {
+            button.textContent = 'Switch to Dark Mode';
+        } else {
+            button.textContent = 'Switch to Light Mode';
+        }
+    }
+</script>
 
 </body>
 </html>
