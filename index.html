@@ -103,6 +103,26 @@
             background-color: #fff;
             color: #333;
         }
+
+        .nav-button {
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode .nav-button {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .content-section {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -115,6 +135,34 @@
 <section id="bio">
     <h2>About Me</h2>
     <p>I am Trung Nguyen, a passionate Technical Artist with extensive experience in creating stunning visual effects and optimizing performance for various VR platforms. My skills include Unity, particle systems, and real-time rendering.</p>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <button class="nav-button" onclick="showSection('technical')">Technical</button>
+    <button class="nav-button" onclick="showSection('art')">Art</button>
+
+    <div id="technical" class="content-section">
+        <h3>Technical Skills</h3>
+        <ul>
+            <li>Unity</li>
+            <li>Shader Programming</li>
+            <li>Particle Systems</li>
+            <li>Performance Optimization</li>
+            <!-- Add more technical skills as needed -->
+        </ul>
+    </div>
+
+    <div id="art" class="content-section">
+        <h3>Art Skills</h3>
+        <ul>
+            <li>3D Modeling</li>
+            <li>Texturing</li>
+            <li>Lighting</li>
+            <li>Animation</li>
+            <!-- Add more art skills as needed -->
+        </ul>
+    </div>
 </section>
 
 <section id="portfolio">
@@ -154,6 +202,19 @@
             button.textContent = 'Switch to Light Mode';
         }
     }
+
+    function showSection(sectionId) {
+        var sections = document.querySelectorAll('.content-section');
+        sections.forEach(function(section) {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Set default section
+    document.addEventListener('DOMContentLoaded', function() {
+        showSection('technical');
+    });
 </script>
 
 </body>
